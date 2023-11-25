@@ -4,21 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>诗词背诵</title>
-    <style>
-
-div.sentence:has(span.blanked:hover):after{
-    content:var(--keyans);
-    margin-left:10px;
-    font-size:15px
-}
-div.sentence{
-    margin:10px;
-    font-size:24px
-}
-
-    </style>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <fieldset id="select_book">
+        <legend>选择背诵范围</legend>
+    </fieldset>
+    <div>悬停于横线，显示答案；点击序号，显示文章信息</div>
     <div id="main"></div>
     <script src="main.js"></script>
 </body>

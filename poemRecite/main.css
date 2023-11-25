@@ -1,0 +1,34 @@
+div.sentence:has(span.blanked:hover)::after{
+    content:var(--keyans);
+    margin-left:10px;
+    font-size:15px
+}
+div.sentence{
+    margin:10px;
+    font-size:24px
+}
+div.messageBox{
+    --mg:0.9;
+    font-size:18px;
+    background-color: #DFFC;
+    border:2px solid #08F;
+    border-radius:10px;
+    position:fixed;
+    top:calc( (1 - var(--mg)) * 100vh / 2 );
+    left:calc( (1 - var(--mg)) * 100vw / 2 );
+    height:calc( var(--mg) * 100vh );
+    width:calc( var(--mg) * 100vw );
+    backdrop-filter: blur(20px);
+    overflow:auto
+}
+div.messageBox>*{
+    margin:10px;
+}
+div.messageBox>button{
+    background-color:white;
+    border:2px dashed black;
+    font-size:20px
+}
+div.messageBox>button:hover{
+    background-color:lightpink
+}
