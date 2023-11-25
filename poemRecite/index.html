@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>诗词背诵</title>
+    <style>
+
+div.sentence:has(span.blanked:hover):after{
+    content:var(--keyans);
+    margin-left:10px;
+    font-size:15px
+}
+div.sentence{
+    margin:10px;
+    font-size:24px
+}
+
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+    <script src="main.js"></script>
+</body>
+</html>
