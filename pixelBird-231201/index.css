@@ -1,0 +1,89 @@
+:root{
+    --landheight:120px
+}
+.game{
+    --width:800px;
+    --height:600px;
+    width:var(--width);
+    height:var(--height);
+    border:2px solid;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}
+.game .sky{
+    background-image:url("./img/sky.png");
+    background-size:var(--width) var(--height);
+    height:100%;
+    width:200%;
+    position:absolute;
+    left:0;
+    top:0;
+}
+.game .land{
+    background-image:url("./img/land.png");
+    background-size:var(--width) var(--landheight);
+    height:var(--landheight);
+    width:200%;
+    position:absolute;
+    left:0;
+    bottom:0;
+}
+.game .bird{
+    background-image: url("./img/bird.png");
+    width:60px;
+    height:60px;
+    position:absolute;
+    left:150px;
+    top:150px
+}
+.game .bird.swing0{
+    background-position: 0 0;
+}
+.game .bird.swing1{
+    background-position:-60px 0;
+}
+.game .bird.swing2{
+    background-position: -120px 0;
+}
+.game .board{
+    position:absolute;
+    left:0;
+    top:0;
+    width:var(--width);
+    height:var(--height);
+    z-index:9;
+}
+.game .board>*{
+    display:none;
+    text-align: center;
+    font-size:50px;
+    font-weight:bold
+}
+.pipe{
+    --width:50px;
+    --height:100px;
+    position: absolute;
+    width:var(--width);
+    height:var(--height);
+    left:500px
+}
+.pipe.up{
+    background:url("./img/pipe_up.png");
+    background-size:var(--width) var(--height);
+    background-position: bottom;
+    top:0
+}
+.pipe.down{
+    background:url("./img/pipe_down.png");
+    background-size:var(--width) var(--height);
+    bottom:var(--landheight)
+}
+button.restart{
+    font-size:30px;
+    background-color:lightblue;
+    color:darkgreen
+}
+button.restart:hover{
+    color:black
+}
