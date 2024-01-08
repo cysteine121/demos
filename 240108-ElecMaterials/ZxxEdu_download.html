@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>下载中小学教材网站教材</title>
+    </head>
+    <body>
+        请点开来自<a href="https://basic.smartedu.cn/elecEdu" target="_blank">国家中小学智慧教育平台</a>的教材网页，将链接粘贴到下面的输入框中：<br/>
+        <input id="input_u" placeholder="请输入链接..." style="width:100%"/><br/>
+        <div style="word-break: break-all;">输入示例：https://basic.smartedu.cn/tchMaterial/detail?contentType=assets_document&contentId=b8e9a3fe-dae7-49c0-86cb-d146f883fd8e&catalogType=tchMaterial&subCatalog=tchMaterial</div>
+        <div>结果：<span id="span_res">暂无</span></div>
+        <script>
+            input_u.addEventListener("input",function(){
+                const v=input_u.value,m=v.match(/(?<=Id=).+?(?=&)/),m0=m&&m[0];
+                span_res.innerHTML=m0?`<a href="https://r2-ndr.ykt.cbern.com.cn/edu_product/esp/assets_document/${m0}.pkg/pdf.pdf" target="_blank">点击前往</a>`:"链接格式错误"
+            })
+        </script>
+    </body>
+</html>
