@@ -1,0 +1,27 @@
+#main *{
+    font-size:34px
+}
+#timer_container li{
+    margin: 1em 0
+}
+#timer_container li>*{
+    margin: 0 0.5em
+}
+button.new{
+    --bgColor: #03ba37;
+    --color: white
+}
+button.delete{
+    --bgColor: #ff006f;
+    --color: white
+}
+button.operation{
+    --bgColor: #0095ff;
+    --color: white
+
+}
+button{
+    background-color: var(--bgColor);
+    color: var(--color);
+    border: 2px solid rgb(from var(--bgColor) calc(r * .7) calc(g * .7) calc(b * .7))
+}

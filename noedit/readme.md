@@ -1,0 +1,2 @@
+# About this folder (noedit)
+This folder collects some projects that already exist, and only acts as a place to release them on github, so the project owner should not edit the project from HERE. Instead, edit them where they are originally created and then copy them to this folder.
