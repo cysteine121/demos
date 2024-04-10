@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Read .har files</title>
+	<style type="text/css">
+ .btn_bc{
+	background: darkblue;
+	color: white;
+	border: 1px solid skyblue;
+	border-bottom: none;
+ }
+ [data-ld="0"]{
+	background: white;
+	color: black;
+ }
+ [data-ld="1"]{
+	background: black;
+	color: white;
+ }
+	</style>
+</head>
+<body data-ld="1">
+<div id="div_all">
+	<select id="sel_LD" onchange="document.body.setAttribute('data-LD',this.value)"><option value="0">Light mode</option><option value="1" selected>Dark mode</option></select>
+	<p>It may take some time to analyze and show the .har files. Generally, only image files can be directly read using the tiny tool. Always set the options below before you upload a file or click 'regenerate'.</p>
+	<input type="file" id="input_upf"/>&emsp;<button onclick="generate()">regenerate</button>
+	<div>matching MIME：<input type="text" value="image/*" id="input_match_mime"/></div>
+	<div>Items shown in one line(1~10): <input type="number" value="2" min="1" max="10" id="input_shownum"/></div>
+	<div id="div_res"></div>
+	<script type="text/javascript">
+
+var ele=(n="div",c="",p=0,a={})=>{let o=document.createElement(n);if(!(c instanceof Array))c=[c];for(let x of c){if(x instanceof HTMLElement||p==0){o.append(x)}else if(p==1){var d=document.createElement("span");d.innerHTML=x;o.append(d)}};for(let x in a)o.setAttribute(x,a[x]);return o};
+var readFile=function(e,t/*type：0-text 1-image link 2-binary*/,g){var f=e.target.files[0];if(window.FileReader){let r=new FileReader();if(t==2){r.readAsBinaryString(f)}else if(t==1){r.readAsDataURL(f)}else{r.readAsText(f)};r.onload=function(e){g(e.target.result,f.type)}}};
+var har={};
+HTMLElement.prototype.removeAllChildren=function(){while(this.childNodes[0])this.removeChild(this.childNodes[0])};
+function cDis(e,n){let c=e.parentNode.parentNode.childNodes[1].childNodes,m=1-n;c[n].style.display="";c[m].style.display="none"};
+function rightMime(i,a){//input mime&auctual mime
+	for(let x of i.split(";")){
+		if(x===a)return true;
+		let m=i.match(/.+(?=\/\*)/g);
+		if(m&&a.match(new RegExp(m[0])))return true
+	};
+	return false
+}
+function generate(){
+	let sn=isnRep(input_shownum.value);
+	input_shownum.value=sn;
+	div_res.removeAllChildren();
+	let et=har.log.entries,etl=et.length,oa={},oe=ele(),mime=input_match_mime.value,amime;
+	for(let x of et){let xc=x.response.content;amime=xc.mimeType;if(rightMime(mime,amime)===false)continue;oa[x.request.url]=[xc.text]};
+	let counter=0;
+	for(let i in oa){counter++;
+		let e1=ele("div",[ele("span",counter+". "),ele("button","Display",0,{onclick:"cDis(this,0)",class:"btn_bc"}),ele("button","Detail",0,{onclick:"cDis(this,1)",class:"btn_bc"})]),
+			e2=ele("div",[ele("img","",0,{src:"data:"+amime+";base64,"+oa[i][0],style:"max-width:100%;max-height:100%"}),ele("div",[ele("div","Matched item "+counter+": ",0,{style:"font-weight:bold"}),ele("div",i),ele("a","Click to turn to the page",0,{href:i,target:"_blank"})],0,{style:"display:none"})],0,{style:"max-height:100%"});
+		oe.append(ele("div",[e1,e2],0,{style:"display:inline-block;width:calc("+100/sn+"% - 2px);max-height:"+600/sn+"px;word-break:break-all;font-size:"+30/sn+"px"}))};
+	div_res.append(ele("div",`There ${etl==1?"is":"are"} ${etl} item${etl==1?"":"s"}. ${counter} match${counter==1?"":"es"} found (duplicated ones are not counted).`),oe);
+};
+input_upf.addEventListener("change",function(e){readFile(e,0,function(r,t){
+	har=JSON.parse(r);generate()
+})});
+function isnRep(v){v=v.replace(/\D/g,"");if(v>10)v=10;if(v<1)v=1;return v};
+input_shownum.addEventListener("input",function(e){})
+
+	</script>
+	<br><br><small>Tool by CYS.</small>
+</div>
+</body>
+</html>
