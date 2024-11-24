@@ -1,0 +1,20 @@
+.tone{
+    position: relative;
+    --width: 13em;
+    --isBend: 1;
+    --right: 2em;
+    --thickness: 1px;
+    --height: 40%;
+    font-family: "楷体";
+    white-space: nowrap;
+}
+.tone::after{
+    position: absolute;
+    border-top: var(--thickness) solid black;
+    top: -0.1em;
+    right: calc(var(--right) - 0.05em);
+    height: calc(var(--height) * var(--isBend));
+    width: calc(var(--width) - 0.05em);
+    border-right: var(--thickness) solid black;
+    content: "";
+}
