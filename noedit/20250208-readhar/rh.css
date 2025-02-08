@@ -11,3 +11,10 @@
 .imageBox>img{
     width: calc(100% * var(--size));
 }
+body.night{
+    background-color: black;
+    color: white;
+}
+body.lightcolor>*{
+    opacity: 50%
+}

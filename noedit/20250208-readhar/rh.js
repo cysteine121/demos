@@ -62,4 +62,18 @@ document.getElementById("checkDoublesize").addEventListener("change", function()
     }else{
         div.style.setProperty("--size", 1)
     }
-})
+});
+document.getElementById("checkNightmode").addEventListener("change", function(){
+    if(this.checked){
+        document.body.classList.add("night")
+    }else{
+        document.body.classList.remove("night")
+    }
+});
+document.getElementById("checkLightcolor").addEventListener("change", function(){
+    if(this.checked){
+        document.body.classList.add("lightcolor")
+    }else{
+        document.body.classList.remove("lightcolor")
+    }
+});
