@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Hars Image</title>
+    <link rel="stylesheet" href="./rh.css">
+</head>
+<body>
+    <template id = "t_imageBox">
+        <div class = "imageBox">
+            <img/>
+        </div>
+    </template>
+    <div>
+        This version of readhar reads every image of the har.
+    </div>
+    <div>
+        <input id = "upfile" type = "file"/><br/>
+        <fieldset>
+            <legend>详细设置</legend>
+            <div>
+                每行展示数量: <input id = "cnum" type = "number" min = "1" max = "10" value = "2"/>
+                <span id = "cnumalert"></span>
+            </div>
+            <div>
+                <input type = "checkbox" id = "checkDoublesize" name = "doublesize"/>
+                <label for = "checkDoublesize">图片放大一倍</label>
+            </div>
+        </fieldset>
+
+    </div>
+    <div id = "images"></div>
+    <script src = "rh.js"></script>
+</body>
+</html>

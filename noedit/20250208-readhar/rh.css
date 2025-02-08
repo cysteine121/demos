@@ -1,0 +1,13 @@
+#images{
+    --cnum: 2;
+    --size: 1;
+    display: grid;
+    grid-template-columns: repeat(var(--cnum), 1fr);
+}
+.imageBox{
+    margin: 6px;
+    overflow-x: auto;
+}
+.imageBox>img{
+    width: calc(100% * var(--size));
+}
